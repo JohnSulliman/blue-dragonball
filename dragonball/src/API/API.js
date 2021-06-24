@@ -4,26 +4,21 @@ export const API = {
     baseUrl: 'https://blue-backend-modulo4front.herokuapp.com',
     authorization: 'johnatantc@hotmail.com',
 
-    //Visualizar os itens
-    readAllUrl: () => API.baseUrl + '/',
-    readSingleUrl: id =>API.baseUrl + '/' + id,
-
-    //Criar um item
+    //Rota para criar os itens
     createUrl: () => API.baseUrl + '/',
 
-    //Deletar todos os itens
+    //Rota para visualizar os itens
+    readAllUrl: () => API.baseUrl + '/',
+    readSingleUrl: id => API.baseUrl + '/' + id,
+
+    //Rota para atualizar os itens
+    updateSingleUrl: id => API.baseUrl + '/' + id,
+
+    //Rota para deletar os itens
     deleteAllUrl: () => API.baseUrl + '/',
-
-    //Visualizar Post
-    buildAPIGetRequest: url => {
-        return fetch(url, {
-            method: "GET",
-            headers: new Headers({
-                Authorization: API.authorization,
-            })
-        })
-    },
-
+    deleteSingleUrl: id => API.baseUrl + '/' + id,
+    
+    
     //Criar Post
     buildAPIPostRequest: (url, body) => {
         return fetch(url, {
@@ -35,6 +30,29 @@ export const API = {
             body: JSON.stringify(body)
         })
     },
+    
+    //Visualizar Post
+    buildAPIGetRequest: url => {
+        return fetch(url, {
+            method: "GET",
+            headers: new Headers({
+                Authorization: API.authorization,
+            })
+        })
+    },
+
+    //Atualizar Post
+    buildAPIPutRequest: (url, body) => {
+        return fetch(url, {
+            method: "PUT",
+            headers: new Headers({
+                Authorization: API.authorization,
+                'Content-type': 'application/json'
+            }),
+            body: JSON.stringify(body)
+        })
+    },
+
 
     //Apagar Post
     buildAPIDeleteRequest: url => {

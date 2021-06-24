@@ -1,12 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 //Components
-import {Navbar, Nav, Container, Row, Col} from 'react-bootstrap'
-import {Switch, Route} from 'react-router-dom'
-import {ReadAll} from './Components/ReadAll/ReadAll'
-import {Create} from './Components/Create/Create'
-import {DeleteAll} from './Components/DeleteAll/DeleteAll'
-import {About} from './Components/About/About'
+import {Navbar, Nav, Container, Row, Col} from 'react-bootstrap';
+import {Switch, Route} from 'react-router-dom';
+import {Create} from './Components/Create/Create';
+import {ReadAll} from './Components/ReadAll/ReadAll';
+import {ReadSingle} from './Components/ReadSingle/ReadSingle';
+import {Update} from './Components/Update/Update';
+import {DeleteAll} from './Components/DeleteAll/DeleteAll';
+import {DeleteSingle} from './Components/DeleteSingle/DeleteSingle';
+import {About} from './Components/About/About';
 
 //Assets
 import logo from './Img/Logo.png'
@@ -37,9 +40,12 @@ function App() {
         <Row>
           <Col>
             <Switch>
-              <Route path='/' exact={true} component={ReadAll}></Route>
               <Route path='/create' component={Create}></Route>
+              <Route path='/' exact={true} component={ReadAll}></Route>
+              <Route path='/view/:id' component={ReadSingle}></Route>
+              <Route path='/update/:id' component={Update}></Route>
               <Route path='/delete-all' component={DeleteAll}></Route>
+              <Route path='/delete/:id' component={DeleteSingle}></Route>
               <Route path='/about' component={About}></Route>
             </Switch>
           </Col>

@@ -1,5 +1,8 @@
-import { Container } from 'css-declaration-sorter/node_modules/postcss'
-import { Component } from 'react'
+import { Component } from 'react';
+import { Container, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { API } from '../../API/API';
+import '../../Styles/ReadSingle.scss';
 
 export class ReadSingle extends Component {
 
@@ -24,27 +27,28 @@ export class ReadSingle extends Component {
     }
 
     render() {
+        const { item } = this.state;
+        
+        return(
+            <>
+                <Container className="actions">
+                    <Link className="btn btn-info" to={'/update/' + item._id}>Editar</Link>
+                    <Link className="btn btn-danger" to={'/delete/' + item._id}>Excluir</Link>
+                </Container>
 
-        const { isLoading, item} = this.state;
-
-        <>
-            <Container className="actions">
-                <Link className="btn btn-info" to={'/update/' + item._id}>Editar</Link>
-                <Link className="btn btn-danger" to={'/delete/' + item._id}>Excluir</Link>
-            </Container>
-
-            <Container className="info">
-                <Row>
-                    <Col>
-                        <h1 className="info-title">{item.name}</h1>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <img className="info-img" src={item.imageUrl} alt={item.name}/>
-                    </Col>
-                </Row>
-            </Container>
-        </>
+                <Container className="info">
+                    <Row>
+                        <Col>
+                            <h1 className="info-title">{item.name}</h1>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <img className="info-img" src={item.imageUrl} alt={item.name}/>
+                        </Col>
+                    </Row>
+                </Container>
+            </>
+        );
     }
 }
