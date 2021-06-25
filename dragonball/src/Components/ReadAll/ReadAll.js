@@ -1,7 +1,10 @@
 import {Component} from "react";
-import {Col, Container, Row} from 'react-bootstrap';
+import {Container, Row} from 'react-bootstrap';
 import {ItemCard} from './ItemCard';
 import {API} from '../../API/API';
+
+//Assents
+import loadingImg from '../../Img/loading.svg'
 
 //Styles
 import '../../Styles/ReadAll.scss';
@@ -27,14 +30,48 @@ export class ReadAll extends Component {
         })
     }
 
-    render() {
-        return(
-            <Container>
-                <Row>
+    //Filtrar itens para a barra de pesquisa
+    filterItems = e => {
+        const searchValue = e.target.value?.toLowerCase();
+        const filteredItems = this.state.items.filter(item => item.name?.toLowerCase().includes(searchValue));
 
-                </Row>
-            </Container>
-        );
+        this.setState({
+            filteredItems,
+        })
+    };
+
+    render() {
+        const {isLoading, filteredItems} = this.state;
+
+        if(isLoading) {
+            return(
+                <Container>
+                    <Row>
+                        <img className="loading" src={loadingImg} alt='' />
+                    </Row>
+                </Container>
+            );
+        } else {
+            if(filteredItems == false){
+                return(
+                    <Container>
+                        <Row>
+                            <p className="noData">Não possui personagens cadastrados!</p>
+                        </Row>
+                    </Container>
+                );
+            } else {
+                return(
+                    <Container>
+                        <Row>
+                            {filteredItems.map(item => {
+                                return <ItemCard item={item} key={item._id} />
+                            })}
+                        </Row>
+                    </Container>
+                );
+            }
+        }
     }
 
 }

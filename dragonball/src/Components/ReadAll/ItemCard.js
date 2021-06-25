@@ -19,16 +19,16 @@ export class ItemCard extends Component {
 
         return(
             <Col xs='12' sm='6' md='4' lg='3'>
-                <Route>
+                <Route
                     render = { ({history}) => (
-                        <Card className='item-card' onClick={() => {history.push(`/view/${item._id}`);}}>
-                            <Card.Img variant='top' src={item.imageUrl}></Card.Img>
+                        <Card className='item-card' onClick={() => {history.push(`/view/${item._id}`)}}>
+                            <Card.Img variant='top' src={item.imageUrl} />
                             <Card.Body>
                                 <Card.Title>{item.name}</Card.Title>
                             </Card.Body>
                         </Card>    
                     )}
-                </Route>
+                />
             </Col>
         );
     }
