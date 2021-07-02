@@ -2,26 +2,37 @@ import { Component } from "react";
 
 //Componets
 import {Card} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+
+//Styles
+import '../../Styles/About.scss';
 
 //Assents
-
+import John from '../../Img/John.jpg';
 
 
 export class About extends Component {
     render() {
         return (
             <>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src='' />
+                <img className='aboutImg' src={John} />
+                <Card>
                     <Card.Body>
-                        <Card.Title>Jonathan Sulliman</Card.Title>
+                        <Card.Title>Jonathan "Sulliman" Feliciano</Card.Title>
                         <Card.Text>
-                            Projeto realizado juntamente com a professora Isabella para a aula
-                            de Front-End da Blue-EdTech.
+                            Esse Projeto foi realizado para o módulo 4 de Front-End do curso da Blue-EdTech, dado
+                            pela professora Isabella. O trabalho possui a temática de um RPG de turno feito para
+                            android e IOS chamado Epic Seven.
+                            <p>
+                                Meu nome é Jonathan Feliciano, tenho 25 anos e atualmente sou aluno da Blue-EdTech.
+                                Sou um amante de jogos, seja para computador, celular ou console. Também gosto de
+                                animais e sou apaixonado por música. Sempre tive grande interesse por tecnologia,
+                                então decidi, finalmente, me aprofundar nessa área.
+                            </p>
+                            <p>
+                                Bom, acho que é isso! :)
+                            </p>
+                            <a href='https://github.com/JohnSulliman' target='_blanck'>Acesse meu GitHub!</a>
                         </Card.Text>
-                        <Link className='btn btn-info' 
-                        to={{pathname: 'https://github.com/JohnSulliman'}} target='_blank'>GitHub</Link>
                     </Card.Body>
                 </Card>
             </>
